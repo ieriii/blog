@@ -1,0 +1,59 @@
+/* Ultra-minimal styling - less ink */
+
+:root[data-theme="dark"] {
+    --primary: rgb(180, 180, 180);
+    --secondary: rgb(120, 120, 120);
+    --tertiary: rgb(50, 50, 52);
+    --content: rgb(170, 170, 170);
+    --border: transparent;
+    --entry: transparent;
+}
+
+:root {
+    --primary: rgb(80, 80, 80);
+    --secondary: rgb(140, 140, 140);
+    --border: transparent;
+    --entry: transparent;
+}
+
+/* Lighter font weights */
+.post-entry h2,
+.first-entry h1,
+h1, h2, h3 {
+    font-weight: 500;
+}
+
+/* Remove card styling */
+.post-entry {
+    border: none;
+    background: transparent;
+    padding: var(--gap) 0;
+    border-radius: 0;
+}
+
+.post-entry:active {
+    transform: none;
+}
+
+/* Single line summary */
+.entry-content {
+    -webkit-line-clamp: 1;
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+/* Lighter footer/meta */
+.entry-footer {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Remove hover effects for cleaner feel */
+.post-entry:hover {
+    background: transparent;
+}
+
+/* Thinner separators if any */
+hr {
+    opacity: 0.2;
+}

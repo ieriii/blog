@@ -1,0 +1,12 @@
+baseURL = 'https://yourusername.github.io/blog/'
+languageCode = 'en-us'
+title = 'Working Notes'
+theme = 'PaperMod'
+
+[params]
+  defaultTheme = "auto"
+  showReadingTime = true
+  showShareButtons = false
+  showPostNavLinks = true
+  showCodeCopyButtons = true
+
