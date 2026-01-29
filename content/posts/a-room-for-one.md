@@ -1,7 +1,7 @@
 ---
-layout: post
 title: "Is Anyone Here?"
 date: 2026-01-29
+draft: false
 ---
 
 I wanted to build something calm on the internet. A place where you can be alone with your thoughts. So I made a room. Only one person can be inside at a time. When you leave, everything disappears.
