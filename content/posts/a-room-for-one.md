@@ -20,7 +20,7 @@ When you type something, the AI doesn't reply with text. It replies with a visua
 
 The model converts your words into numbers, a vector with 384 dimensions. Like a fingerprint of what you said. I split this into three parts, and each controls something different.
 
-**Intensity.** How strong the pulse feels. Longer messages have more weight. If the numbers lean strongly in one direction, the pulse is stronger.
+**Intensity.** How strong the pulse feels. Exclamation marks, question marks, and capital letters make the pulse stronger. Longer messages add some weight too. The numbers themselves also matter: if they lean heavily positive or negative, the pulse intensifies.
 
 **Hue.** The first part of the numbers decides the color. I mix them in a way that spreads across the color wheel. So "I'm excited" and "I'm worried" end up different colors.
 
@@ -30,7 +30,7 @@ The room doesn't answer with words. It just shows you something back.
 
 ## Privacy
 
-The AI runs locally using WebGPU, a new technology that lets websites use your graphics card. The model is small. It understands meaning but can't generate text.
+The model is small enough to run inside your browser. It understands meaning but can't generate text.
 
 Your words go into the model, and then they are gone. When you close the tab, the memory clears. There is no database.
 
