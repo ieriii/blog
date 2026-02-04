@@ -4,11 +4,11 @@ date: 2026-01-29
 draft: false
 ---
 
-I wanted to build something calm on the internet. A place where you can be alone with your thoughts. So I made a room. Only one person can be inside at a time. When you leave, everything disappears.
+I wanted to build something calm on the internet. I made a room. Only one person can be inside at a time. When you leave, everything disappears.
 
-You type something, something acknowledges you, and then it's gone. No logs. No history.
+You type something, something acknowledges you, and then it's gone. No history.
 
-The internet is public. Everyone can see everything, and it keeps everything. Every post, every comment. Most AI tools send your words to a server somewhere, training on what you say. I wanted to make the opposite. A small corner that forgets, where only one person fits.
+The internet is public. Everyone can see everything, and it keeps everything. Every post, every comment. Most AI tools send your words to a server somewhere and might use them for training. I wanted to make the opposite. A small corner that forgets, where only one person fits.
 
 You can try it at [isanyonehere.xyz](https://isanyonehere.xyz).
 
@@ -38,6 +38,6 @@ The only thing that goes over the internet is a heartbeat. A small signal that s
 
 ---
 
-I keep thinking about this question: when you are alone with an AI, really alone, no logs, no traces, what would you do?
+I keep thinking about this question: when you are alone with an AI, really alone, no traces, what would you do?
 
 I don't think this is useful. But it is beautiful.
