@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .stroke { stroke: #1a1a1a; fill: #1a1a1a }
+    @media (prefers-color-scheme: dark) {
+      .stroke { stroke: #e5e5e5; fill: #e5e5e5 }
+    }
+  </style>
+  <line class="stroke" x1="8" y1="24" x2="24" y2="8" stroke-width="3" stroke-linecap="round"/>
+  <circle class="stroke" cx="24" cy="8" r="2"/>
+</svg>

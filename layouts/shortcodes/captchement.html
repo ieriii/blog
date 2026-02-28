@@ -1,0 +1,123 @@
+<style>
+#puzzle-container{display:flex;flex-direction:column;align-items:center;margin:1.5rem 0}
+.captcha-checkbox-card{display:flex;align-items:center;justify-content:space-between;background:#f9fafb;border:1px solid #d3d3d3;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:1rem 1.1rem;cursor:pointer;font-family:"Roboto",system-ui,-apple-system,sans-serif;transition:border-color .2s ease,box-shadow .2s ease;width:302px;max-width:100%;box-sizing:border-box}
+.captcha-checkbox-card:hover{border-color:#b0b0b0;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+.captcha-checkbox-card:hover .captcha-checkbox-box:not(.loading):not(.verified){border-color:#4285f4}
+.captcha-checkbox-left{display:flex;align-items:center;gap:.8rem}
+.captcha-checkbox-right{display:flex;flex-direction:column;align-items:center;gap:.15rem}
+.captcha-checkbox-brand{font-size:.6rem;color:#555;letter-spacing:.02em}
+.captcha-checkbox-box{width:26px;height:26px;border:2px solid #c1c1c1;border-radius:2px;background:#fff;display:flex;align-items:center;justify-content:center;transition:border-color .2s ease;flex-shrink:0}
+.captcha-checkbox-box.loading{border:3px solid #dbdbdb;border-top-color:#4285f4;border-radius:50%;width:22px;height:22px;animation:captcha-spin .8s linear infinite;background:none}
+.captcha-checkbox-box.verified{border:none;background:none;width:32px;height:32px}
+.captcha-checkbox-box.verified svg{animation:captcha-checkmark .35s ease-out forwards}
+.captcha-checkbox-label{font-size:.875rem;color:#000;user-select:none;font-weight:400}
+.captcha-try-again{display:block;margin-top:.5rem;font-size:.75rem;color:#4285f4;cursor:pointer;background:none;border:none;padding:0;font-family:inherit}
+.captcha-try-again:hover{text-decoration:underline}
+@keyframes captcha-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes captcha-checkmark{0%{transform:scale(0);opacity:0}50%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+.captcha-widget{border-radius:3px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.15);border:1px solid #d3d3d3;background:#fff;animation:fadeIn .3s ease-out;max-width:400px}
+.captcha-header{background:#4A90D9;padding:1rem 1rem .75rem}
+.captcha-prompt{color:#fff;font-size:.95rem;font-weight:500;line-height:1.35;margin-bottom:.25rem}
+.captcha-instruction{color:rgba(255,255,255,.7);font-size:.75rem}
+.captcha-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#e0e0e0;padding:2px}
+.captcha-tile{position:relative;cursor:pointer;overflow:hidden;aspect-ratio:1;background:#fff}
+.captcha-tile svg{width:100%;height:100%;display:block;transition:transform .15s ease}
+.captcha-tile:hover{filter:brightness(.95)}
+.captcha-tile .tile-check{position:absolute;bottom:0;left:0;width:24px;height:24px;background:#4A90D9;color:#fff;font-size:14px;font-weight:bold;display:flex;align-items:center;justify-content:center;border-radius:0 4px 0 0;opacity:0;transform:scale(0);transition:opacity .15s ease,transform .15s ease;pointer-events:none}
+.captcha-tile.selected{outline:3px solid #4A90D9;outline-offset:-3px}
+.captcha-tile.selected .tile-check{opacity:1;transform:scale(1)}
+.captcha-tile.selected svg{transform:scale(.88);transition:transform .15s ease}
+.captcha-footer{display:flex;align-items:center;justify-content:space-between;padding:.5rem .75rem;border-top:1px solid #e0e0e0;background:#f9f9f9}
+.captcha-brand{font-size:.7rem;color:#999;letter-spacing:.02em}
+.captcha-verify{background:#4A90D9;color:#fff;border:none;padding:.45rem 1.5rem;font-size:.8rem;font-weight:600;border-radius:3px;cursor:pointer;font-family:inherit;letter-spacing:.04em;transition:background .15s ease}
+.captcha-verify:hover{background:#3a7bc8}
+.captcha-verify:active{background:#2e6db5}
+@keyframes fadeIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+.grid-correct{background:#86efac}
+.grid-correct .captcha-tile{opacity:0;transition:opacity .25s ease-out}
+.grid-wrong{animation:gridShake .4s ease-in-out}
+.grid-wrong .captcha-tile{opacity:0;transition:opacity .3s ease-out .3s}
+@keyframes gridShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+@media(prefers-color-scheme:dark){
+.captcha-checkbox-card{background:#222;border-color:#444;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.captcha-checkbox-box{background:#333;border-color:#555}
+.captcha-checkbox-card:hover .captcha-checkbox-box:not(.loading):not(.verified){border-color:#6aa8e6}
+.captcha-checkbox-box.loading{border-color:#555;border-top-color:#6aa8e6}
+.captcha-checkbox-label{color:#e0e0e0}
+.captcha-checkbox-brand{color:#777}
+.captcha-try-again{color:#6aa8e6}
+.captcha-widget{border-color:#444;background:#2a2a2a}
+.captcha-grid{background:#444}
+.captcha-tile{background:#2a2a2a}
+.captcha-footer{background:#222;border-top-color:#444}
+.captcha-brand{color:#777}
+.captcha-tile svg{filter:brightness(.85)}
+}
+</style>
+<div id="puzzle-container">
+  <div class="captcha-checkbox-card" onclick="onCheckboxClick()">
+    <div class="captcha-checkbox-left">
+      <div class="captcha-checkbox-box" id="checkbox-box"></div>
+      <span class="captcha-checkbox-label">I'm not a robot</span>
+    </div>
+    <div class="captcha-checkbox-right">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28"><circle cx="12" cy="16" r="10" fill="none" stroke="#6366f1" stroke-width="2.5" opacity="0.8"/><circle cx="20" cy="16" r="10" fill="none" stroke="#22c55e" stroke-width="2.5" opacity="0.8"/></svg>
+      <span class="captcha-checkbox-brand">captchement</span>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+"use strict";
+var puzzles=[];var currentPuzzle=null;var usedIndices=new Set();var puzzlesReady=false;
+var checkboxHTML='<div class="captcha-checkbox-card" onclick="onCheckboxClick()"><div class="captcha-checkbox-left"><div class="captcha-checkbox-box" id="checkbox-box"></div><span class="captcha-checkbox-label">I\'m not a robot</span></div><div class="captcha-checkbox-right"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28"><circle cx="12" cy="16" r="10" fill="none" stroke="#6366f1" stroke-width="2.5" opacity="0.8"/><circle cx="20" cy="16" r="10" fill="none" stroke="#22c55e" stroke-width="2.5" opacity="0.8"/></svg><span class="captcha-checkbox-brand">captchement</span></div></div>';
+var puzzlePromise=fetch("{{ "captchement/puzzles.json" | relURL }}")
+.then(function(r){return r.json()})
+.then(function(data){puzzles=data;puzzlesReady=true});
+function showRandomPuzzle(){
+if(usedIndices.size>=puzzles.length){usedIndices.clear()}
+var idx;do{idx=Math.floor(Math.random()*puzzles.length)}while(usedIndices.has(idx));
+usedIndices.add(idx);currentPuzzle=puzzles[idx];
+document.getElementById("puzzle-container").innerHTML=currentPuzzle.widget_html;
+}
+function showCheckbox(verified){
+var container=document.getElementById("puzzle-container");
+container.innerHTML=checkboxHTML;
+if(verified){
+var box=document.getElementById("checkbox-box");
+box.classList.add("verified");
+box.innerHTML='<svg viewBox="0 0 24 24" width="28" height="28"><path d="M4.5 12.75l6 6 9-13.5" fill="none" stroke="#00c853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var card=container.querySelector(".captcha-checkbox-card");
+card.style.cursor="default";card.removeAttribute("onclick");
+var btn=document.createElement("button");
+btn.className="captcha-try-again";btn.textContent="Try another puzzle";
+btn.onclick=function(){showCheckbox(false)};
+card.parentNode.insertBefore(btn,card.nextSibling);
+}
+}
+window.onCheckboxClick=function(){
+var box=document.getElementById("checkbox-box");
+if(!box||box.classList.contains("loading")||box.classList.contains("verified"))return;
+box.classList.add("loading");
+if(puzzlesReady){setTimeout(showRandomPuzzle,600)}
+else{puzzlePromise.then(function(){setTimeout(showRandomPuzzle,300)})}
+};
+window.toggleCard=function(card){card.classList.toggle("selected")};
+window.verifyAnswer=function(){
+var selected=document.querySelectorAll(".captcha-tile.selected");
+var selectedIds=Array.from(selected).map(function(el){return parseInt(el.dataset.cellId)}).sort(function(a,b){return a-b});
+var correctIds=currentPuzzle.correct_ids.slice().sort(function(a,b){return a-b});
+var isCorrect=JSON.stringify(selectedIds)===JSON.stringify(correctIds);
+var container=document.getElementById("puzzle-container");
+if(isCorrect){
+var grid=container.querySelector(".captcha-grid");
+if(grid){grid.classList.add("grid-correct")}
+setTimeout(function(){showCheckbox(true)},400);
+}else{
+var grid=container.querySelector(".captcha-grid");
+if(grid){grid.classList.add("grid-wrong");setTimeout(showRandomPuzzle,600)}
+else{showRandomPuzzle()}
+}
+};
+})();
+</script>
