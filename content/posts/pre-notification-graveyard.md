@@ -5,8 +5,12 @@ draft: false
 summary: "1,525 missing M-numbers since 2000. Each one a merger that talked to DG COMP and walked away."
 ---
 
-DG COMP gives every notified merger an M-number. The numbers aren't fully sequential, and each gap is a deal that opened pre-notification talks and then walked away. Roughly 1,500 of them since 2000.
+Every merger DG COMP reviews gets an M-number. The numbers should run in order. They don't.
 
-A caveat: not every gap is a dead deal. Some are admin artefacts: numbers reserved and never used, withdrawn re-allocations, paperwork. Don't read the exact count as precise. The shape is.
+Each gap could be a deal that started talking, then stopped. Pre-notification, never notified. Roughly 1,500 since 2000.
+
+Not every gap is a dead deal. Some are paperwork. Numbers reserved and never used. Allocations withdrawn. Don't read the count as exact.
+
+The shape is.
 
 {{< mortality >}}
