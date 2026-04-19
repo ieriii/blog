@@ -10,6 +10,7 @@ summaryLength = 15
   showShareButtons = false
   showPostNavLinks = true
   showCodeCopyButtons = true
+  disableSpecial1stPost = true
 
   [params.assets]
     favicon = "favicon.svg"
