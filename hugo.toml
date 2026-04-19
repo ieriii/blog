@@ -2,6 +2,7 @@ baseURL = 'https://yourusername.github.io/blog/'
 languageCode = 'en-us'
 title = 'Working Notes'
 theme = 'PaperMod'
+summaryLength = 15
 
 [params]
   defaultTheme = "auto"
