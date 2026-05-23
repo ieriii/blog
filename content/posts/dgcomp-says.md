@@ -13,6 +13,8 @@ Some are invented for the case. Some are misreads of scanned PDFs. Some are real
 
 A handful: *[gatekeeper](https://competition-cases.ec.europa.eu/cases/M.890)* (1997), *[digitalisation](https://competition-cases.ec.europa.eu/cases/M.993)* (1998), *[ecosystem](https://competition-cases.ec.europa.eu/cases/M.4747)* (2008), *[machine-learning](https://competition-cases.ec.europa.eu/cases/SA.54806)* (2019), *[self-preferencing](https://competition-cases.ec.europa.eu/cases/M.10796)* (2023).
 
+Every two hours the bot fetches the latest English decisions from the Commission's case portal, OCRs the scans, tokenises, and drops anything the corpus has seen before. What's left goes to a small model that decides if each survivor looks like a real word. What passes becomes an email.
+
 The only newsletter you can't put on a calendar. Some weeks nothing. Some weeks two.
 
 One word per email, no thread, no spam. Subscribe at [buttondown.com/dgcomp-first-said](https://buttondown.com/dgcomp-first-said).
