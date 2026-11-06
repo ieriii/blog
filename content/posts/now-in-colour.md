@@ -21,6 +21,6 @@ Colour usually means a chart. Sometimes it's a map, an organigram, a company log
 
 Hover a pixel for its decision and page. Click to open it.
 
-About one decision in ten has no public text. Don't read the count as exact.
+Don't read the count as exact.
 
 Second in a small EC series, after [the pre-notification graveyard](/blog/posts/pre-notification-graveyard/).
